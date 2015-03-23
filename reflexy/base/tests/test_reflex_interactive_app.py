@@ -27,6 +27,7 @@ class TestInteractiveAppBase(unittest.TestCase):
         sys.argv.append('--in_sop=test')
         sys.argv.append('--in_sof_rec_orig=test')
         rapp.PipelineInteractiveApp()
+        1/0
 
 
 class TestInteractiveApp(TestInteractiveAppBase):
