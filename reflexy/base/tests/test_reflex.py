@@ -1,5 +1,5 @@
 import unittest
-import reflex
+from reflexy.base import reflex
 
 
 class TestReflexModule(unittest.TestCase):

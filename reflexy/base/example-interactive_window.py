@@ -71,7 +71,7 @@ try:
                 self.merge = pipeline_product.PipelineProduct(
                     frames["SCI_SLIT_MERGE1D_NIR"])
 
-            if 'LINE_GUESS_TAB_BLUE' in frames):
+            if 'LINE_GUESS_TAB_BLUE' in frames:
                 self.lineguess_found = True
                 self.lineguess = pipeline_product.PipelineProduct(
                     frames["LINE_GUESS_TAB_BLUE"])

@@ -1,13 +1,9 @@
 #!/usr/bin/env python
-import reflex 
+from reflexy.base import reflex
 import sys
 from optparse import OptionParser
 import warnings
 import time
-
-try:
-    import astropy
-except ImportError:
 
 try:
     from astropy.io import fits
@@ -215,8 +211,6 @@ if __name__ == '__main__':
             ' https://www.eso.org/sci/software/pipelines/reflex_workflows/#software_prerequisites\n'
             ' or in the MUSE Reflex tutorial.\n\n '
             'Coordinates in the header will be used for alignment.\n')
-     if import_astropy == 0:
-         outputs.messages = ('Not good enough - install astropy')
 
       parser.write_outputs()
       sys.exit()

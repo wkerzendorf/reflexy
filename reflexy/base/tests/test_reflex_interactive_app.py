@@ -1,5 +1,5 @@
 import unittest
-import reflex_interactive_app as rapp
+from reflexy.base import reflex_interactive_app as rapp
 import sys
 import contextlib
 from StringIO import StringIO
