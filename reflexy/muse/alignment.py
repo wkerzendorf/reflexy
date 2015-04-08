@@ -1,13 +1,19 @@
 #!/usr/bin/env python
 from reflexy.base import reflex
-import sys
+
+import sys 
+import os
+import math
+import json
 from optparse import OptionParser
 import warnings
 import time
 
 try:
+    from optparse import OptionParser
     from astropy.io import fits
     import numpy as np
+    from numpy import array
     from photutils import datasets
     from photutils import daofind
     from astropy.stats import median_absolute_deviation as mad
@@ -22,10 +28,26 @@ try:
     import matplotlib.pyplot as plt
     import_ok = 1
 #except ImportError:
-except ImportError:
+except ImportError as e:
     import_ok = 0
+    import_error = e
 
 def find_closest(id_,x,y,idlist,xlist,ylist,dist_max):
+    """
+
+    :param id_:
+     id
+    :param x: ~float
+
+    :param y: ~float
+    :param idlist:
+    :param xlist: ~numpy.ndarray
+    :param ylist: ~numpy.ndarray
+    :param dist_max: ~float
+
+    :return:
+    """
+
     distances = ((x-xlist)**2. + (y-ylist)**2.)**0.5
     indici, = np.where(distances == distances.min())
     D = distances.min()
@@ -47,6 +69,21 @@ def find_closest(id_,x,y,idlist,xlist,ylist,dist_max):
 
 
 def find_matches(id_,x_,y_,id_ref,x_ref,y_ref,dist_max):
+    """
+
+    :param id_: ~numpy.ndarray
+    :param x_: ~numpy.ndarray
+
+    :param y_: ~numpy.ndarray
+
+    :param id_ref: ~numpy.ndarray
+
+    :param x_ref: ~numpy.ndarray
+
+    :param y_ref: ~numpy.ndarray
+    :param dist_max: ~float
+    :return:
+    """
 
     i=0
     offset_x=[0]
@@ -210,8 +247,7 @@ if __name__ == '__main__':
       outputs.messages = ('Warning: Failing in importing some required Python modules.\n Check software requirements at:\n '
             ' https://www.eso.org/sci/software/pipelines/reflex_workflows/#software_prerequisites\n'
             ' or in the MUSE Reflex tutorial.\n\n '
-            'Coordinates in the header will be used for alignment.\n')
-
+            'Coordinates in the header will be used for alignment.\n' + str(import_error))
       parser.write_outputs()
       sys.exit()
  
