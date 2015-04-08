@@ -115,7 +115,7 @@ def find_matches(id_,x_,y_,id_ref,x_ref,y_ref,dist_max):
        i = i+1
     
     if (offset_x_ == []):
-       offset_x=[0]
+       offset_x=[0] + 5.5
        offset_y=[0]
        rms_x=[0]
        rms_y=[0]
